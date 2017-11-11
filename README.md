@@ -16,7 +16,7 @@ python /path/to/repo/analyzeLogs.py path/to/logs number-of-files
 ````
 
 
-**Note:** Files need to be in the structure `filename.extension`, `filename.extension.1`, `filename.extension.3` ...
+**Note:** Files need to be in the structure `filename.extension`, `filename.extension.1`, `filename.extension.2`, `filename.extension.n`.
 
 ## Output
 The script creates a `authlist.csv` into the path from where the script was started. 
