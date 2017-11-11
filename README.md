@@ -39,5 +39,5 @@ python fofo/analyzeLogs.py foo/bar/auth.log 3
 Which will create `fofo/authlist.csv`.
 
 ## License
-This code is licensed under the GNU GENERAL PUBLIC LICENSE version 3 (GNU GPL v3). Fore more information see [LICENSE](https://github.com/jansule/analyzeAuthLogs/blob/master/LICENSE).
+This code is licensed under the GNU GENERAL PUBLIC LICENSE version 3 (GNU GPL v3). For more information see [LICENSE](https://github.com/jansule/analyzeAuthLogs/blob/master/LICENSE).
 
