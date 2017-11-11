@@ -1,5 +1,5 @@
 # analyzeAuthLogs
-Python script that reads auth.log files and saves usernames and counts of attempted logins.
+Python script that reads auth.log files and saves usernames and counts of attempted logins as well as corresponding ip adresses.
 
 **Reads multiple log files at once.**
 ## Requirements
@@ -19,7 +19,8 @@ python /path/to/repo/analyzeLogs.py path/to/logs number-of-files
 **Note:** Files need to be in the structure `filename.extension`, `filename.extension.1`, `filename.extension.2`, `filename.extension.n`.
 
 ## Output
-The script creates a `authlist.csv` into the path from where the script was started. 
+The script creates a `authlist.csv` into the path from where the script was started.
+Columns are separated via `;`.
 
 ## Example
 Given following file structure
