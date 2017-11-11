@@ -29,45 +29,41 @@ def analyze_auth_logs():
         match = p1.match(line)
         if match is not None:
             auths += line
+            match_index = None
             if len(usernames) == 0:
                 if match.group(3) is not None:
-                    usernames.append(match.group(3))
-                    count[match.group(3)] = 1
+                    match_index = 3
                 elif match.group(4) is not None:
-                    usernames.append(match.group(4))
-                    count[match.group(4)] = 1
+                    match_index = 4
+                usernames.append(match.group(match_index))
+                count[match.group(match_index)] = 1
             else:
                 exists = False
                 if match.group(3) is not None:
-                    for name in usernames:
-                        if name == match.group(3):
-                            exists = True
-                            count[match.group(3)] += 1
-                            break
-                    if not exists:
-                        usernames.append(match.group(3))
-                        count[match.group(3)] = 1
+                    match_index = 3
                 elif match.group(4) is not None:
-                    for name in usernames:
-                        if name == match.group(4):
-                            exists = True
-                            count[match.group(4)] += 1
-                            break
-                    if not exists:
-                        usernames.append(match.group(4))
-                        count[match.group(4)] = 1
+                    match_index = 4
+                for name in usernames:
+                    if name == match.group(match_index):
+                        exists = True
+                        count[match.group(match_index)] += 1
+                        break
+                if not exists:
+                    usernames.append(match.group(match_index))
+                    count[match.group(match_index)] = 1
         
     logs.close()
     os.remove("allLogs.txt")
-    output = "User,Logins\n"
+    output = "User,LoginAttempts\n"
     for key in count:
         output += key + "," + str(count[key]) + "\n"
     authlist = open("authlist.csv", "w")
     authlist.write(output)
     authlist.close()
 
+##### Main #######
 path = sys.argv[1]
 n_files = sys.argv[2]
-read_logs(path, int(n_files)) # call read_logs function and specifiy that the first 15 files should be read
+read_logs(path, int(n_files))
 analyze_auth_logs()
 print "Analysis complete. Results in " + os.getcwd() + "/authlist.csv"
