@@ -54,7 +54,7 @@ def analyze_auth_logs():
                             if match.group(6) == i:
                                 ip_exists = True
                                 break
-                        else:
+                        if not ip_exists:
                             count[match.group(match_index)]["ip"].append(match.group(6))
                         break
                 if not exists: # if user does not exists yet, add username and ip
